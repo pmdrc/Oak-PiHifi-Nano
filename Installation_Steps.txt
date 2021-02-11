@@ -1,0 +1,26 @@
+1- Download piCorePlayer image 
+  https://docs.picoreplayer.org/downloads/
+   (choose latest Standard Version)
+
+2- Burn piCorePlayer onto a SD card
+     Using for example balenaEtcher, burn the Zip image file to the SD card.
+     
+3- Setup Wifi without ethernet
+
+Create a file named wpa_supplicant.conf with the below content and copy it to the SD card Boot partition 
+  - >On a PC, DRIVE will be the drive letter for your SD card. (ie. F:)
+---------------------------------------------
+# Maintained by piCorePlayer
+ctrl_interface=/var/run/wpa_supplicant
+ctrl_interface_group=staff
+# Two Character Country Code
+country=US
+update_config=1
+
+network={
+	ssid="yourssid"
+	psk="password"
+	key_mgmt=WPA-PSK
+	auth_alg=OPEN
+}
+----------------------------------------------
