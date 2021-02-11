@@ -7,7 +7,7 @@
      
 3- Setup Wifi without ethernet
 
-Create a file named wpa_supplicant.conf with the below content and copy it to the SD card Boot partition 
+Create a file named **wpa_supplicant.conf** with the below content and copy it to the SD card Boot partition 
   - >On a PC, DRIVE will be the drive letter for your SD card. (ie. F:)
 ---------------------------------------------
 # Maintained by piCorePlayer
