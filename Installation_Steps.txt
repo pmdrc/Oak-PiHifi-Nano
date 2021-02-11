@@ -7,7 +7,7 @@
      
 3- Setup Wifi without ethernet
 
-Create a file named **wpa_supplicant.conf** with the below content and copy it to the SD card Boot partition 
+Create a file named wpa_supplicant.conf with the below content and copy it to the SD card Boot partition 
   - >On a PC, DRIVE will be the drive letter for your SD card. (ie. F:)
 ---------------------------------------------
 # Maintained by piCorePlayer
@@ -24,3 +24,13 @@ network={
 	auth_alg=OPEN
 }
 ----------------------------------------------
+
+4- Enable the Pirate Audio HAT on /boot/Config.txt
+    Change the below lines to match this
+    
+# onboard audio overlay
+dtparam=audio=off
+audio_pwm_mode=2
+dtoverlay=hifiberry-dac
+gpio=25=op,dh
+
