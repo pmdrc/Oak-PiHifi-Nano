@@ -1,4 +1,4 @@
-# RPi-Hifi
+# Pi-HiFi-DAC
 
 Create a portable Nano HiFi DAC headphone Amp with support for Spotify Connect, Qobuz ...
 Hardware:
