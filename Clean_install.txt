@@ -1,0 +1,48 @@
+
+- Install Raspbian in a clean SD
+
+- Configure SSH
+
+- Configure Wireless
+
+- Configure PiSugar2
+
+- Install LMS
+
+sudo apt-get install libio-socket-ssl-perl libnet-libidn-perl libnet-ssleay-perl perl-openssl-defaults
+cd
+
+mkdir lms
+
+cd lms
+
+wget http://downloads.slimdevices.com/nightly/7.9/sc/cf749e5/logitechmediaserver_7.9.2~1527861596_all.deb
+
+sudo dpkg -i logitechmediaserver_7.9.2~1527861596_all.deb
+
+- install SqueezeLight Player
+sudo apt-get install libasound2-dev libflac-dev libmad0-dev libvorbis-dev libfaad-dev libmpg123-dev liblircclient-dev libncurses5-dev
+cd
+mkdir squeezelite
+cd squeezelite 
+wget https://sourceforge.net/projects/lmsclients/files/squeezelite/linux/squeezelite-1.8.7.1053-armv6hf.tar.gz
+tar -xzf squeezelite-1.8.7.1053-armv6hf.tar.gz
+sudo systemctl enable squeezelite.service
+sudo mv squeezelite /usr/bin/squeezelite
+squeezelite -l
+sudo nano /etc/systemd/system/squeezelite.service
+
+[Unit]
+Description=Squeezelite
+
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/squeezelite -o hw:CARD=ALSA,DEV=1 -n calendar -s 192.168.20.37 -a 80:4 -m 74:da:38:41:f8:9e
+
+[Install]
+WantedBy=multi-user.target
+
+sudo systemctl enable squeezelite.service
+
+alsamixer
