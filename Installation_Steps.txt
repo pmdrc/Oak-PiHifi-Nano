@@ -14,7 +14,7 @@ Create a file named wpa_supplicant.conf with the below content and copy it to th
 ctrl_interface=/var/run/wpa_supplicant
 ctrl_interface_group=staff
 # Two Character Country Code
-country=US
+country=GB
 update_config=1
 
 network={
