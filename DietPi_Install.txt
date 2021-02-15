@@ -33,3 +33,24 @@ ssh to it root/dietpi
 [*] 118  Mopidy: web interface music & radio player
 [*] 128  MPD: music player daemon
 [*] 167  Raspotify: spotify connect client
+
+cd /usr/lib/systemd/system/
+sudo nano squeezelite.service
+  #Edit this line
+  ExecStart=/usr/bin/squeezelite -a 80 40 1 -o hw:CARD=sndrpihifiberry -n 'DietPi-SqueezeLite'
+sudo systemctl daemon-reload
+sudo service squeezelite restart
+
+- edit /boot/config.txt add:
+dtparam=spi=on
+gpio=25=op,dh
+
+sudo apt update
+sudo apt-get install python3-rpi.gpio python3-spidev python3-pip python3-pil python3-numpy
+
+sudo pip install st7789
+
+tc@rpi37-wls:~$ wget http://ralph-irving.users.sourceforge.net/pico/lcd-brightness.sh
+tc@rpi37-wls:~$ chmod 755 lcd-brightness.sh
+
+
