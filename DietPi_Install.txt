@@ -37,7 +37,7 @@ ssh to it root/dietpi
 cd /usr/lib/systemd/system/
 sudo nano squeezelite.service
   #Edit this line
-  ExecStart=/usr/bin/squeezelite -a 80 40 1 -o hw:CARD=sndrpihifiberry -n 'DietPi-SqueezeLite'
+  ExecStart=/usr/bin/squeezelite -a 80:40::1 -o hw:CARD=sndrpihifiberry -C 5 -n 'DietPi-SqueezeLite'
 sudo systemctl daemon-reload
 sudo service squeezelite restart
 
