@@ -28,12 +28,15 @@ insert card , boot and wait
 
 ssh to it root/dietpi
 
+sudo dietpi-software
+-Software Optimised
 [*] 36   Squeezelite: audio player for lms & squeezebox 
-[*] 37   Shairport Sync: airplay audio player with multiroom sync
-[*] 118  Mopidy: web interface music & radio player
-[*] 128  MPD: music player daemon
-[*] 167  Raspotify: spotify connect client
-
+-Software Addictional
+[*] 5    ALSA: linux sound system   
+[*] 130  Python 3 pip: Python 3 package installer   
+[*] 152  Avahi-Daemon: hostname broadcast (mac, pc bonjour)   
+[*] 17   Git Client: git clone etc      
+ 
 cd /usr/lib/systemd/system/
 sudo nano squeezelite.service
   #Edit this line
@@ -50,6 +53,46 @@ sudo apt-get install python3-rpi.gpio python3-spidev python3-pip python3-pil pyt
 
 sudo pip install st7789
 
+sudo dietpi-software
+-Software Optimised
+[*] 118  Mopidy: web interface music & radio player
+[*] 128  MPD: music player daemon
+[*] 167  Raspotify: spotify connect client
+[*] 37   Shairport Sync: airplay audio player with multiroom sync
+
+sudo pip3 install Mopidy-PiDi pidi-display-pil pidi-display-st7789 mopidy-raspberry-gpio
+
+edit  /etc/mopidy/mopidy.conf and add:
+
+#--------------------------------------------------------------
+[raspberry-gpio]
+enabled = true
+bcm5 = play_pause,active_low,150
+bcm6 = volume_down,active_low,150
+bcm16 = next,active_low,150
+bcm24 = volume_up,active_low,150
+
+[pidi]
+enabled = true
+display = st7789
+
+[mpd]
+hostname = 0.0.0.0
+
+[http]
+hostname = 0.0.0.0
+
+[audio]
+mixer_volume = 40
+output = alsasink
+#--------------------------------------------------------------
+sudo usermod -a -G spi,i2c,gpio,video mopidy
+sudo systemctl enable mopidy
+sudo systemctl start mopidy
+
+reboot
+
+-------
 tc@rpi37-wls:~$ wget http://ralph-irving.users.sourceforge.net/pico/lcd-brightness.sh
 tc@rpi37-wls:~$ chmod 755 lcd-brightness.sh
 
