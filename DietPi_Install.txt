@@ -1,0 +1,35 @@
+1- Download DietPi image for Raspberry Pi
+  https://dietpi.com/downloads/images/DietPi_RPi-ARMv6-Buster.7z
+   
+2- Burn image into a SD card
+     Using for example balenaEtcher, burn the Zip image file to the SD card.
+     
+3- Setup Wifi without ethernet
+    Remove and re-insert card on PC and go to SD boot drive (e: for example)
+    
+    Look for a file called dietpi.txt and change to:
+
+AUTO_SETUP_LOCALE=en_GB.UTF-8
+
+##### Networking Options #####
+AUTO_SETUP_NET_ETHERNET_ENABLED=0
+AUTO_SETUP_NET_WIFI_ENABLED=1
+
+# Sound card
+CONFIG_SOUNDCARD=hifiberry-dac
+
+     After look fo a file called dietpi-wifi.txt and change:
+
+# - Entry 0
+aWIFI_SSID[0]='xxx'
+aWIFI_KEY[0]='xxx'   
+
+insert card , boot and wait
+
+ssh to it root/dietpi
+
+[*] 36   Squeezelite: audio player for lms & squeezebox 
+[*] 37   Shairport Sync: airplay audio player with multiroom sync
+[*] 118  Mopidy: web interface music & radio player
+[*] 128  MPD: music player daemon
+[*] 167  Raspotify: spotify connect client
