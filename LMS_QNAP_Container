@@ -1,0 +1,12 @@
+
+
+add plugins:
+  - Qobuz
+  - Material Skin
+  - Chromecast Bridge
+  
+  https://github.com/CDrummond/lms-material
+  
+  http://localhost:9000/html/docs/cli-api.html
+  http://192.168.1.186:9000/status.html?p0=play&player=dc%3Aa6%3A32%3A24%3Aba%3A85#currentsong
+  
