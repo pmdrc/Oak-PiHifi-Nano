@@ -55,45 +55,19 @@ sudo pip install st7789
 
 sudo dietpi-software
 -Software Optimised
-[*] 118  Mopidy: web interface music & radio player
-[*] 128  MPD: music player daemon
 [*] 167  Raspotify: spotify connect client
 [*] 37   Shairport Sync: airplay audio player with multiroom sync
 
-sudo pip3 install Mopidy-PiDi pidi-display-pil pidi-display-st7789 mopidy-raspberry-gpio
-
-edit  /etc/mopidy/mopidy.conf and add:
-
-#--------------------------------------------------------------
-[raspberry-gpio]
-enabled = true
-bcm5 = play_pause,active_low,150
-bcm6 = volume_down,active_low,150
-bcm16 = next,active_low,150
-bcm24 = volume_up,active_low,150
-
-[pidi]
-enabled = true
-display = st7789
-
-[mpd]
-hostname = 0.0.0.0
-
-[http]
-hostname = 0.0.0.0
-
-[audio]
-mixer_volume = 40
-output = alsasink
-#--------------------------------------------------------------
-sudo usermod -a -G spi,i2c,gpio,video mopidy
-sudo systemctl enable mopidy
-sudo systemctl start mopidy
-
 reboot
 
--------
-tc@rpi37-wls:~$ wget http://ralph-irving.users.sourceforge.net/pico/lcd-brightness.sh
-tc@rpi37-wls:~$ chmod 755 lcd-brightness.sh
 
+-------
+
+https://github.com/pimoroni/st7789-python
+https://github.com/adafruit/Adafruit_CircuitPython_RGB_Display/tree/master/examples
+https://learn.adafruit.com/adafruit-1-14-240x135-color-tft-breakout/python-usage
+https://github.com/pimoroni/pidi-plugins
+https://github.com/pimoroni/pidi-plugins/tree/master/pidi-display-pil/pidi_display_pil
+
+cat /proc/asound/card0/pcm*p/sub*/hw_params
 
