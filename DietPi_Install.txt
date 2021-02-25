@@ -48,17 +48,25 @@ sudo service squeezelite restart
 dtparam=spi=on
 gpio=25=op,dh
 
+# Add software for LCD
 sudo apt update
 sudo apt-get install python3-rpi.gpio python3-spidev python3-pip python3-pil python3-numpy
-
 sudo pip install st7789
 
+# Add other pluggins
 sudo dietpi-software
 -Software Optimised
 [*] 167  Raspotify: spotify connect client
 [*] 37   Shairport Sync: airplay audio player with multiroom sync
 
 reboot
+
+# Add PiSugar2 Battery Software
+sudo apt-get install raspi-config -y
+curl http://cdn.pisugar.com/release/Pisugar-power-manager.sh | sudo bash
+sudo apt-get install -y i2c-tools
+
+sudo apt-get install netcat-openbsd
 
 
 -------
@@ -70,4 +78,3 @@ https://github.com/pimoroni/pidi-plugins
 https://github.com/pimoroni/pidi-plugins/tree/master/pidi-display-pil/pidi_display_pil
 
 cat /proc/asound/card0/pcm*p/sub*/hw_params
-
