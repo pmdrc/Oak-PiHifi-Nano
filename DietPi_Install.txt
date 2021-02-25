@@ -64,11 +64,16 @@ reboot
 # Add PiSugar2 Battery Software
 sudo apt-get install raspi-config -y
 curl http://cdn.pisugar.com/release/Pisugar-power-manager.sh | sudo bash
-sudo apt-get install -y i2c-tools
-
+sudo apt-get install -y i2c-tools libi2c-dev python-smbus
 sudo apt-get install netcat-openbsd
 
+#Update /boot/config.txt
+sudo nano /boot/config.txt
+#edit this two;
+dtparam=i2c_arm=on
+dtparam=i2c1=on
 
+reboot
 -------
 
 https://github.com/pimoroni/st7789-python
