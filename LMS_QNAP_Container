@@ -8,6 +8,9 @@ add plugins:
   https://github.com/CDrummond/lms-material
   
   http://localhost:9000/html/docs/cli-api.html
-  http://192.168.1.186:9000/status.html?p0=play&player=b8:27:eb:be:9d:3a#currentsong
   
-  http://192.168.1.130:9000/music/current/cover.jpg?player=b8:27:eb:be:9d:3a
+curl -X GET "http://192.168.1.30:9000/status.html?p0=play&player=b8:27:eb:be:9d:3a" |& grep -i "playingSong\"" | awk '{for (i=4; i<NF; i++) printf $i " "; if (NF >= 4) print $NF; }
+
+curl -X GET "http://192.168.1.30:9000/status.html?p0=play&player=b8:27:eb:be:9d:3a" |& grep -i "playingSong\"" | awk '{for (i=4; i<NF; i++) printf $i " "; if (NF >= 4) print $NF; }' | sed -r 's/^target="browser">(.*)<\/a>/\1/'
+
+http://192.168.1.130:9000/music/current/cover.jpg?player=b8:27:eb:be:9d:3a
